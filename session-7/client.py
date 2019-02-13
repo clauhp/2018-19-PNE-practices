@@ -13,7 +13,11 @@ s.connect((IP, PORT))
 # It necesary to encode the string into bytes
 s.send(str.encode("HELLO FROM THE CLIENT!!!"))
 
+# Receive data from the server
+msg = s.recv(2048).decode("utf-8")
+print("MESSAGE FROM THE SERVER:\n")
+print(msg)
+
 # Print some information about the socket
-print(s)
 print("End")
 s.close()
