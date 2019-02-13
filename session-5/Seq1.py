@@ -11,10 +11,16 @@ class Seq:
     def len(self):
         return len(self.strbases)
 
+class Gene(Seq):
+    """This class is derived from the seq class
+    All the objects of class Gene will
+    inheritage the methods from the seq class"""
+    pass
+
 
 # Main program
-# Create an object of the class Seq
-s1 = Seq("AGTACACTGGT")
+# Create a Sequence
+s1 = Gene("ATTCGATCC")
 s2 = Seq("CGTAAC")
 
 # Access the attribute strbases for printing the sequence
