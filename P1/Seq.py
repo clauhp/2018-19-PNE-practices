@@ -8,10 +8,10 @@ class Seq:
     def complement(self):
         comp = {'A':'T', 'T':'A', 'G':'C', 'C':'G'}
         base_list = list(self.strbases)
-        comp_list = []
+        comp_list = []                      #empty list to store the complementary bases
         for i in base_list:
             comp_list.append(comp[i])
-        comp_str = ''.join(comp_list)
+        comp_str = ''.join(comp_list)       #transforms the list onto a string
         return comp_str
     def reverse(self):
         rev_seq= self.strbases[::-1]
@@ -47,20 +47,3 @@ class Seq:
             perc = 0
 
         return perc
-
-
-
-
-s1 = Seq(input("Please write a valid sequence: ").upper())
-
-c1 = s1.complement()
-l1 = s1.len()
-r1 = s1.reverse()
-n1 = s1.count()
-p1 = s1.perc('C')
-
-print (c1)
-print (l1)
-print (r1)
-print (n1)
-print (p1)
