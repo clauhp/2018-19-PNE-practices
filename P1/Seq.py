@@ -14,8 +14,9 @@ class Seq:
         comp_str = ''.join(comp_list)       #transforms the list onto a string
         return comp_str
     def reverse(self):
-        rev_seq= self.strbases[::-1]
+        rev_seq = self.strbases[::-1]
         return rev_seq
+
     def count(self):
         num_a = 0
         num_c = 0
