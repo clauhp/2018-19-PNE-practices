@@ -13,6 +13,7 @@ class Seq:
             comp_list.append(comp[i])
         comp_str = ''.join(comp_list)       #transforms the list onto a string
         return comp_str
+
     def reverse(self):
         rev_seq = self.strbases[::-1]
         return rev_seq
@@ -36,7 +37,6 @@ class Seq:
                 num_g += 1
         tup_num = (num_a, num_c, num_g, num_t)
         numcount = dict(zip(tup_bases, tup_num))
-
         return numcount
 
     def perc(self, base):
@@ -44,7 +44,6 @@ class Seq:
         numcount = self.count()
         if length > 0:
             perc = round(100.0 * numcount[base] / length, 1)
-        else:
+        else:                               #Division by 0 error
             perc = 0
-
         return perc
