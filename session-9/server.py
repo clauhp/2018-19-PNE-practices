@@ -1,4 +1,6 @@
 import socket
+import termcolor
+
 
 PORT = 8080
 IP = "212.128.253.80"
@@ -9,7 +11,7 @@ def process_client(cs):
     #Reading the message from the client
     msg = cs.recv(2048).decode("utf-8")
 
-    print("Message from te client: {}".format(msg))
+    termcolor.cprint(msg, 'red')
 
     cs.send (str.encode(msg))
     # -- Close the socket
