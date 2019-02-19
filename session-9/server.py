@@ -10,6 +10,8 @@ def process_client(cs):
 
     #Reading the message from the client
     msg = cs.recv(2048).decode("utf-8")
+    if msg == 'EXIT':
+        exit()
 
     termcolor.cprint(msg, 'red')
 
