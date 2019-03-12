@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import termcolor
 
-PORT = 8081
+PORT = 8080
 
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
@@ -33,4 +33,3 @@ with socketserver.TCPServer(("", PORT), TestHandler) as httpd:
         httpd.serve_forever()
     except KeyboardInterrupt:
         httpd.server_close()
-
