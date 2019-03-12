@@ -2,7 +2,7 @@ import socket
 
 # SERVER IP, PORT
 PORT = 8080
-IP = "192.168.1.37"
+IP = "10.3.53.94"
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
