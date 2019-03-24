@@ -7,7 +7,7 @@ s4 = Seq(s3.reverse())
 
 sequences = s1, s2, s3, s4
 n = 1
-bases = ["A","C","G","T"]
+bases = ["A", "C", "G", "T"]
 
 for s in sequences:
     print("\nSequence {}: {}".format(n,s.strbases), "\n   Length: {}".format(s.len()), "\n   Bases count: ", end='')
