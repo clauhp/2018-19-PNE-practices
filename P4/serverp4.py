@@ -6,6 +6,7 @@ IP = "192.168.1.40"
 PORT = 8080
 MAX_OPEN_REQUESTS = 5
 
+
 def process_client(cs):
     """Process the client request.
     Parameters:  cs: socket for communicating with the client"""
@@ -34,7 +35,6 @@ def process_client(cs):
         f = open("error.html", "r")
         content = f.read()
         f.close()
-
 
     status_line = "HTTP/1.1 200 ok\r\n"
 
