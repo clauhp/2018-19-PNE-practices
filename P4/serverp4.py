@@ -2,7 +2,7 @@ import socket
 import termcolor
 
 # Change this IP to yours!!!!!
-IP = "10.3.53.34"
+IP = "192.168.1.40"
 PORT = 8080
 MAX_OPEN_REQUESTS = 5
 
@@ -19,16 +19,22 @@ def process_client(cs):
     termcolor.cprint(msg, 'green')
 
     if msg.startswith("GET /blue"):
-        pass
+        f = open("blue.html", "r")
+        content = f.read()
+        f.close()
     elif msg.startswith("GET /pink"):
-        pass
-    elif msg.startswith("GET /index"):
-        pass
+        f = open("pink.html", "r")
+        content = f.read()
+        f.close()
+    elif msg.startswith("GET /index") or msg.startswith("GET /"):
+        f = open("index.html", "r")
+        content = f.read()
+        f.close()
     else:
-        pass
+        f = open("error.html", "r")
+        content = f.read()
+        f.close()
 
-    f = open("index.html", "r")
-    content = f.read()
 
     status_line = "HTTP/1.1 200 ok\r\n"
 
