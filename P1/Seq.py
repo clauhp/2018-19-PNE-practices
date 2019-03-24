@@ -6,12 +6,12 @@ class Seq:
         return len(self.strbases)
 
     def complement(self):
-        comp = {'A':'T', 'T':'A', 'G':'C', 'C':'G'}
+        comp = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
         base_list = list(self.strbases)
-        comp_list = []                      #empty list to store the complementary bases
+        comp_list = []                      # empty list to store the complementary bases
         for i in base_list:
             comp_list.append(comp[i])
-        comp_str = ''.join(comp_list)       #transforms the list onto a string
+        comp_str = ''.join(comp_list)       # transforms the list onto a string
         return comp_str
 
     def reverse(self):
@@ -44,6 +44,6 @@ class Seq:
         numcount = self.count()
         if length > 0:
             perc = round(100.0 * numcount[base] / length, 1)
-        else:                               #Division by 0 error
+        else:                               # Division by 0 error
             perc = 0
         return perc
