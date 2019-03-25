@@ -4,7 +4,7 @@ import socketserver
 PORT = 8001
 
 
-class TestHandler(http.server.BaseHTTPRequestHandler):
+class TestHandler (http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         print("GET received")
@@ -26,7 +26,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 Handler = TestHandler
 
-with socketserver.TCPServer(("212.128.253.69", PORT), Handler) as httpd:
+with socketserver.TCPServer(("192.168.1.42", PORT), Handler) as httpd:
     print("Serving at PORT", PORT)
 
     httpd.serve_forever()
