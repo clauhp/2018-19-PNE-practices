@@ -24,9 +24,18 @@ class TestHandler (http.server.BaseHTTPRequestHandler):
 
         return
 
+
 Handler = TestHandler
 
 with socketserver.TCPServer(("192.168.1.42", PORT), Handler) as httpd:
     print("Serving at PORT", PORT)
 
-    httpd.serve_forever()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("")
+        print("Stoped by the user")
+        httpd.server_close()
+
+    print("")
+    print("Server Stopped")
