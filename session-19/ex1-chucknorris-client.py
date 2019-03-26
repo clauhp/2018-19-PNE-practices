@@ -4,7 +4,10 @@ import json
 
 # -- API information
 HOSTNAME = "api.icndb.com"
-ENDPOINT = "/jokes/count"
+ENDPOINT1 = "/jokes/count"
+ENDPOINT2 = "/categories"
+ENDPOINT3 = "jokes/random"
+allendpoints = [ENDPOINT1, ENDPOINT2, ENDPOINT3]
 METHOD = "GET"
 
 # -- Here we can define special headers if needed
@@ -18,27 +21,30 @@ conn = http.client.HTTPConnection(HOSTNAME)
 
 # -- Send the request. No body (None)
 # -- Use the defined headers
-conn.request(METHOD, ENDPOINT, None, headers)
 
-# -- Wait for the server's response
-r1 = conn.getresponse()
+for endpoint in allendpoints:
+    conn.request(METHOD, ENDPOINT1, None, headers)
 
-# -- Print the status
-print()
-print("Response received: ", end='')
-print(r1.status, r1.reason)
+    # -- Wait for the server's response
+    r1 = conn.getresponse()
 
-# -- Read the response's body and close
-# -- the connection
-text_json = r1.read().decode("utf-8")
-conn.close()
+    # -- Print the status
+    print()
+    print("Response received: ", end='')
+    print(r1.status, r1.reason)
 
-# -- Optionally you can print the
-# -- received json file for testing
-# print(text_json)
+    # -- Read the response's body and close
+    # -- the connection
+    text_json = r1.read().decode("utf-8")
+    conn.close()
 
-# -- Generate the object from the json file
-jokes = json.loads(text_json)
+    # -- Optionally you can print the
+    # -- received json file for testing
+    # print(text_json)
 
-# -- Print the received URL
-print("Number of jokes: ", jokes['value'])
+    # -- Generate the object from the json file
+    jokes = json.loads(text_json)
+
+    # -- Print the received URL
+
+    print(jokes['value'])
