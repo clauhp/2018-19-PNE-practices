@@ -4,13 +4,12 @@ import json
 # -- API information
 
 
-def retrievewoeid (place):
+def retrievewoeid(place):
     HOSTNAME = "www.metaweather.com"
 
-    ENDPOINT = "/api/location//search/?query"
+    ENDPOINT = "/api/location/search/?query="
     ENDPOINT += place
     METHOD = "GET"
-
 
     # -- Here we can define special headers if needed
     headers = {'User-Agent': 'http-client'}
@@ -26,33 +25,46 @@ def retrievewoeid (place):
     # -- Wait for the server's response
     r1 = conn.getresponse()
 
-# -- Print the status
-print()
-print("Response received: ", end='')
-print(r1.status, r1.reason)
+    text_json = r1.read().decode("utf-8")
+    conn.close()
 
-# -- Read the response's body and close
-# -- the connection
+    # -- Generate the object from the json file
+    locationid = json.loads(text_json)
+
+    return locationid
+
+
+HOSTNAME = "www.metaweather.com"
+citydata = retrievewoeid(input('Please introduce a capital of the world: '))
+woeid = citydata[0]['woeid']
+ENDPOINT = "/api/location/" + str(woeid) +'/'
+METHOD = 'GET'
+
+headers = {'User-Agent': 'http-client'}
+
+conn = http.client.HTTPSConnection(HOSTNAME)
+
+conn.request(METHOD, ENDPOINT, None, headers)
+
+r1 = conn.getresponse()
+
 text_json = r1.read().decode("utf-8")
 conn.close()
 
-# -- Optionally you can print the
-# -- received json file for testing
-# print(text_json)
-
-# -- Generate the object from the json file
 weather = json.loads(text_json)
 
-# -- Get the data
-time = weather['time']
 
+time = weather['time']
 temp0 = weather['consolidated_weather'][0]
-description = temp0['weather_state_name']
 temp = temp0['the_temp']
-place = weather['title']
 
 print()
-print("Place: {}".format(place))
 print("Time: {}".format(time))
-print("Weather description: {}".format(description))
 print("Current temp: {} degrees".format(temp))
+
+
+
+
+
+# -- Read the response's body and close
+# -- the connection
