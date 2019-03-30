@@ -44,7 +44,7 @@ for endpoint in allendpoints:
 
     # -- Generate the object from the json file
     jokes = json.loads(text_json)
-    rec_url = jokes ['value']
+    rec_url = jokes['value']
 
     if type(rec_url) is int:
         print("The number of jokes is", rec_url)
