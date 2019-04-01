@@ -1,0 +1,24 @@
+{"people": [{
+  "Firstname": "Troll",
+  "Lastname": "Face",
+  "age": 20,
+  "phonenumber":  [
+    {"number": "1111-1111", "type": "home"},
+    {"number": "2222-2222", "type": "mobile"}]
+    },
+  {"Firstname": "Hermione",
+  "Lastname": "Granger",
+  "age": 15,
+  "phonenumber":  [
+    {"number": "0000-0001", "type": "school"}]
+    },
+  {"Firstname": "Snow",
+  "Lastname": "White",
+  "age": 87,
+  "phonenumber":  [
+    {"number": "01 573 8928", "type": "mobile"},
+    {"number": "4822", "type": "home"},
+    {"number": "7070 1 6420", "type": "elders residence"}
+    ]}
+  ]
+}
