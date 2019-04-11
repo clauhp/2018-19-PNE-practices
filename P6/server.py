@@ -4,7 +4,7 @@ import termcolor
 from P1.Seq import Seq
 
 
-PORT = 8001
+PORT = 8000
 
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
@@ -23,18 +23,47 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = f.read()
 
         elif self.path.startswith('/Seq') and '=' in self.path:
+            f = open('response.html', 'w')
             things = self.path.split('&')
             msg = things[0]
             dna = msg[9:]
             base = things[-2].split('=')[1]
-            seq = Seq(dna)
+            s = Seq(dna.upper())
+            operation = things[-1].split('=')[1]
 
-            if 'count' or 'perc' in things[-1]:
-                count = seq.count(base)
-                info.update
+            for x in things:
+                if 'count' in x:
+                    number = s.count()
+                    info.update({operation: number[base]})
+                    print(number)
 
+                elif 'perc' in x:
+                    percentage = s.perc(base)
+                    info.update({operation: percentage})
 
+                elif 'chk=on' in x:
+                    info.update({'length': s.len()})
 
+            content = """<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Sequence</title>
+    </head>
+    <body>
+      <h1>Sequence analysis</h1>
+      <p>Sequence: {}</p>
+      <p></p>
+      <p>{}</p>
+      <p></p>
+      <p>Operation {} on the {} base: {}</p>
+      <a href="/">Main page</a>
+    </body>
+  </html>""".format(dna, info.get('length'), operation, base, info.get(operation))
+            f.write(content)
+            f.close()
+            f = open('response.html', 'r')
+            contents = f.read()
 
         self.send_response(200)
 
