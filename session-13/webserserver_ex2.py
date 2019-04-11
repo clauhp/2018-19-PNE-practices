@@ -22,7 +22,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             content = f.read()
             f.close()
 
-
         self.send_response(200)
         self.send_header('Content-Type', 'text/plain')
         self.send_header('Content-Length', len(str.encode(content)))
@@ -35,7 +34,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 Handler = TestHandler
 
-with socketserver.TCPServer(("192.168.1.42", PORT), Handler) as httpd:
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print("Serving at PORT", PORT)
 
     try:
