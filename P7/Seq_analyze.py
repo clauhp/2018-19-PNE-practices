@@ -13,7 +13,7 @@ class Seq:
         length = len(self.strbases)
         numcount = self.count(base)
         if length > 0:
-            perc = round(100.0 * numcount[base] / length, 1)
+            perc = round(100.0 * numcount / length, 1)
         else:                               # Division by 0 error
             perc = 0
         return perc
